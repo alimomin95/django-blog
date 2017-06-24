@@ -1,0 +1,10 @@
+*.pyc
+*.sqlite3
+*.log
+
+.DS_Store
+migrations/
+.idea/
+env/
+node_modules/
+_build/
