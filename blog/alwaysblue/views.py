@@ -43,3 +43,8 @@ def view_author(request, slug):
         'author': author,
         'posts': Blog.objects.filter(author=author)[:5]
     })
+
+
+def view_login(request):
+    return render(request, 'alwaysblue/login.html')
+
