@@ -1187,7 +1187,7 @@ input::-moz-focus-inner {
 .bricks-wrapper .entry-header .entry-title {
 	font-size: 2.5rem;
 	line-height: 1.32;
-	margin-bottom: 1.8rem;	
+	margin-bottom: 1.8rem;
 }
 .bricks-wrapper .entry-header .entry-title a,
 .bricks-wrapper .entry-header .entry-title a:visited {
@@ -1558,6 +1558,10 @@ header {
 	background-size: 46px 29px;
 	height: 130px;
 	border-bottom: 1px solid #E5E5E5;
+
+	-webkit-box-shadow: 0 8px 6px -6px #999;
+	-moz-box-shadow: 0 8px 6px -6px #999;
+	box-shadow: 0 8px 6px -6px #999;
 }
 header .header-content {
 	height: auto;

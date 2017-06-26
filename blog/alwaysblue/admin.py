@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 from django.contrib import admin
 
-from models import Blog, Category
+from models import Blog, Category, Author
 
 # Register your models here.
 
@@ -17,5 +17,9 @@ class CategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
 
 
+class AuthorAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('title',)}
+
 admin.site.register(Blog)
 admin.site.register(Category)
+admin.site.register(Author)

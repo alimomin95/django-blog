@@ -39,7 +39,7 @@
 
 	<!-- header 
    ================================================== -->
-   <header class="short-header">   
+   <header class="short-header">
 
    	<div class="gradient-block"></div>	
 
@@ -180,6 +180,10 @@
          		</div> <!-- end entry content -->         		
          	</div>
 
+
+
+             {% if posts %}
+                 {% for post in posts %}
          	<article class="brick entry format-standard animate-this">
 
                <div class="entry-thumb">
@@ -193,20 +197,28 @@
 
                		<div class="entry-meta">
                			<span class="cat-links">
-               				<a href="#">Design</a> 
-               				<a href="#">Photography</a>               				
+                            {% for cat in post.category.all %}
+               				<a href="{{ cat.get_absolute_url }}">{{ cat.title }}</a>
+                            {% endfor %}
                			</span>			
                		</div>
 
-               		<h1 class="entry-title"><a href="single-standard.html">Just a Standard Format Post.</a></h1>
+               		<h1 class="entry-title"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h1>
                		
                	</div>
 						<div class="entry-excerpt">
-							Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia aute incididunt velit sint in aliqua cillum in consequat consequat in culpa in anim.
-						</div>
+                            {{ post.body }}
+                        </div>
                </div>
 
         		</article> <!-- end article -->
+                 {% endfor %}
+             {% endif %}
+
+
+
+
+
 
             <article class="brick entry format-standard animate-this">
 
