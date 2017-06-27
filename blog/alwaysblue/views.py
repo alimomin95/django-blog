@@ -11,14 +11,14 @@ from django.shortcuts import render_to_response, get_object_or_404
 
 def home(request):
     return render_to_response('alwaysblue/index.html', {
-        'categories': Tag.objects.all(),
+        'tags': Tag.objects.all(),
         'posts': Blog.objects.all()[:10]
     })
 
 
 def index(request):
     return render_to_response('alwaysblue/index1.html', {
-        'categories': Tag.objects.all(),
+        'tags': Tag.objects.all(),
         'posts': Blog.objects.all()[:10]
     })
 
