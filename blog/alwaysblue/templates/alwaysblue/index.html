@@ -272,7 +272,7 @@
                   </a>
 
                   <div class="audio-wrap">
-                  	<audio id="player" src="{% static 'alwaysblue/media/AirReview-Landmarks-02-ChasingCorporate.mp3' %}" width="100%" height="42" controls="controls"></audio>
+                  	<audio id="player" src="{{ post.audio.url }}" width="100%" height="42" controls="controls"></audio>
                   </div>
                </div>
 
@@ -286,7 +286,7 @@
                			</span>
                		</div>
 
-               		<h1 class="entry-title"><a href="single-audio.html">This Is a Audio Format Post.</a></h1>
+               		<h1 class="entry-title"><a href="{{ post.get_absolute_url }}">This Is a Audio Format Post.</a></h1>
 
                	</div>
 						<div class="entry-excerpt">

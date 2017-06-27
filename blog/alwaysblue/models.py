@@ -65,6 +65,7 @@ class Blog(models.Model):
     author = models.ForeignKey(Author)
     embed_video = models.CharField(max_length=200, null=True, blank=True)
     published = models.BooleanField(default=True)
+    audio = models.FileField(upload_to='audio', null=True, blank=True)
 
     objects = EntryQuerySet.as_manager()
 
