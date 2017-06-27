@@ -49,7 +49,7 @@ def view_post(request, slug):
 
 def view_tag(request, slug):
     tag = get_object_or_404(Tag, slug=slug)
-    return render_to_response('alwaysblue/view_tag.html', {
+    return render_to_response('alwaysblue/tag.html', {
         'tag': tag,
         'posts': Blog.objects.filter(tags=tag)[:5]
     })
