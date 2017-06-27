@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render
 
-from models import Blog, Category, Author
+from models import Blog, Tag, Author
 
 from django.shortcuts import render_to_response, get_object_or_404
 # Create your views here.
@@ -11,14 +11,14 @@ from django.shortcuts import render_to_response, get_object_or_404
 
 def home(request):
     return render_to_response('alwaysblue/index.html', {
-        'categories': Category.objects.all(),
+        'categories': Tag.objects.all(),
         'posts': Blog.objects.all()[:10]
     })
 
 
 def index(request):
     return render_to_response('alwaysblue/index1.html', {
-        'categories': Category.objects.all(),
+        'categories': Tag.objects.all(),
         'posts': Blog.objects.all()[:10]
     })
 
@@ -47,11 +47,11 @@ def view_post(request, slug):
         })
 
 
-def view_category(request, slug):
-    category = get_object_or_404(Category, slug=slug)
-    return render_to_response('alwaysblue/view_category.html', {
-        'category': category,
-        'posts': Blog.objects.filter(category=category)[:5]
+def view_tag(request, slug):
+    tag = get_object_or_404(Tag, slug=slug)
+    return render_to_response('alwaysblue/view_tag.html', {
+        'tag': tag,
+        'posts': Blog.objects.filter(tags=tag)[:5]
     })
 
 

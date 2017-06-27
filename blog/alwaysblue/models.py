@@ -13,7 +13,7 @@ from django.utils.encoding import python_2_unicode_compatible
 
 
 @python_2_unicode_compatible
-class Category(models.Model):
+class Tag(models.Model):
     title = models.CharField(max_length=100, db_index=True)
     slug = models.SlugField(max_length=100, db_index=True)
 
@@ -21,15 +21,15 @@ class Category(models.Model):
         return self.title
 
     class Meta:
-        verbose_name = 'Category'
-        verbose_name_plural = 'Categories'
+        verbose_name = 'Tag'
+        verbose_name_plural = 'Tags'
 
     def __unicode__(self):
         return self.title
 
     @permalink
     def get_absolute_url(self):
-        return ('view_blog_category', None, {'slug': self.slug})
+        return ('view_blog_tag', None, {'slug': self.slug})
 
 
 @python_2_unicode_compatible
@@ -61,7 +61,7 @@ class Blog(models.Model):
     body = MarkdownField()
     created = models.DateTimeField(db_index=True, auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
-    category = models.ManyToManyField(Category)
+    tags = models.ManyToManyField(Tag)
     author = models.ForeignKey(Author)
     embed_video = models.CharField(max_length=200, null=True, blank=True)
     published = models.BooleanField(default=True)
