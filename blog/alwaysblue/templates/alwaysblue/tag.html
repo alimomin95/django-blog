@@ -1,3 +1,5 @@
+{% load static %}
+{% load django_markdown %}
 <!DOCTYPE html>
 <!--[if IE 8 ]><html class="no-js oldie ie8" lang="en"> <![endif]-->
 <!--[if IE 9 ]><html class="no-js oldie ie9" lang="en"> <![endif]-->
@@ -7,7 +9,7 @@
    <!--- basic page needs
    ================================================== -->
    <meta charset="utf-8">
-	<title>Category Page - Abstract</title>
+	<title>Tag Page - Abstract</title>
 	<meta name="description" content="">  
 	<meta name="author" content="">
 
@@ -17,15 +19,15 @@
 
  	<!-- CSS
    ================================================== -->
-   <link rel="stylesheet" href="css/base.css">
-   <link rel="stylesheet" href="css/vendor.css">  
-   <link rel="stylesheet" href="css/main.css">
-        
+   <link rel="stylesheet" href="{% static 'alwaysblue/css/base.css' %}">
+   <link rel="stylesheet" href="{% static 'alwaysblue/css/vendor.css' %}">
+   <link rel="stylesheet" href="{% static 'alwaysblue/css/main.css' %}">
+
 
    <!-- script
    ================================================== -->
-	<script src="js/modernizr.js"></script>
-	<script src="js/pace.min.js"></script>
+	<script src="{% static 'alwaysblue/js/modernizr.js' %}"></script>
+	<script src="{% static 'alwaysblue/js/pace.min.js' %}"></script>
 
    <!-- favicons
 	================================================== -->
@@ -52,14 +54,14 @@
 				<ul class="main-navigation sf-menu">
 					<li><a href="index.html" title="">Home</a></li>									
 					<li class="has-children current">
-						<a href="category.html" title="">Categories</a>
+						<a href="tag.html" title="">Categories</a>
 						<ul class="sub-menu">
-			            <li><a href="category.html">Wordpress</a></li>
-			            <li><a href="category.html">HTML</a></li>
-			            <li><a href="category.html">Photography</a></li>
-			            <li><a href="category.html">UI</a></li>
-			            <li><a href="category.html">Mockups</a></li>
-			            <li><a href="category.html">Branding</a></li>
+			            <li><a href="tag.html">Wordpress</a></li>
+			            <li><a href="tag.html">HTML</a></li>
+			            <li><a href="tag.html">Photography</a></li>
+			            <li><a href="tag.html">UI</a></li>
+			            <li><a href="tag.html">Mockups</a></li>
+			            <li><a href="tag.html">Branding</a></li>
 			         </ul>
 					</li>
 					<li class="has-children">
