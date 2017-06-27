@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 from django.contrib import admin
 
-from models import Blog, Category, Author
+from models import Blog, Tag, Author
 
 from django_markdown.admin import MarkdownModelAdmin
 
@@ -16,7 +16,7 @@ class BlogAdmin(MarkdownModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
 
 
-class CategoryAdmin(admin.ModelAdmin):
+class TagAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
 
 
@@ -24,5 +24,5 @@ class AuthorAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
 
 admin.site.register(Blog, BlogAdmin)
-admin.site.register(Category, CategoryAdmin)
+admin.site.register(Tag, TagAdmin)
 admin.site.register(Author, AuthorAdmin)
