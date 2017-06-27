@@ -5,6 +5,8 @@ from django.db import models
 
 from django.db.models import permalink
 
+from django_markdown.models import MarkdownField
+
 from django.utils.encoding import python_2_unicode_compatible
 
 # Create your models here.
@@ -17,6 +19,10 @@ class Category(models.Model):
 
     def __str__(self):
         return self.title
+
+    class Meta:
+        verbose_name = 'Category'
+        verbose_name_plural = 'Categories'
 
     def __unicode__(self):
         return self.title
@@ -42,19 +48,33 @@ class Author(models.Model):
         return ('view_blog_author', None, {'slug': self.slug})
 
 
+class EntryQuerySet(models.QuerySet):
+    def published(self):
+        return self.filter(publish=True)
+
+
 @python_2_unicode_compatible
 class Blog(models.Model):
-    title = models.CharField(max_length=100, unique=True)
-    slug = models.SlugField(max_length=100, unique=True)
+    title = models.CharField(max_length=200)
+    slug = models.SlugField(max_length=200, unique=True)
     type = models.IntegerField(default=0)
-    body = models.TextField()
-    posted = models.DateField(db_index=True, auto_now_add=True)
+    body = MarkdownField()
+    created = models.DateTimeField(db_index=True, auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
     category = models.ManyToManyField(Category)
     author = models.ForeignKey(Author)
     embed_video = models.CharField(max_length=200, null=True, blank=True)
+    published = models.BooleanField(default=True)
+
+    objects = EntryQuerySet.as_manager()
 
     def __str__(self):
         return self.title
+
+    class Meta:
+        verbose_name = 'Blog Entry'
+        verbose_name_plural = 'Blog Entries'
+        ordering = ['-created']
 
     def __unicode__(self):
         return self.title
