@@ -24,9 +24,27 @@ def index(request):
 
 
 def view_post(request, slug):
-    return render_to_response('alwaysblue/single-standard.html', {
-        'post': get_object_or_404(Blog, slug=slug)
-    })
+    object = get_object_or_404(Blog, slug=slug)
+    if object.type == 0:
+        return render_to_response('alwaysblue/single-standard.html', {
+            'post': object
+        })
+    elif object.type == 1:
+        return render_to_response('alwaysblue/single-standard.html', {
+            'post': object
+        })
+    elif object.type == 3:
+        return render_to_response('alwaysblue/single-audio.html', {
+            'post': object
+        })
+    elif object.type == 4:
+        return render_to_response('alwaysblue/single-gallery.html', {
+            'post': object
+        })
+    elif object.type == 6:
+        return render_to_response('alwaysblue/single-video.html', {
+            'post': object
+        })
 
 
 def view_category(request, slug):
