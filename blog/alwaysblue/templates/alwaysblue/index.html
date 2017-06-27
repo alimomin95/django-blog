@@ -363,7 +363,7 @@
             <article class="brick entry format-video animate-this">
 
                <div class="entry-thumb video-image">
-                  <a href="https://www.youtube.com/embed/llv8BFB_k-A" data-lity>
+                  <a href="{{ post.embed_video }}" data-lity>
 	                  <img src="{% static 'alwaysblue/images/thumbs/ottawa-bokeh.jpg' %}" alt="bokeh">
                   </a>
                </div>
@@ -378,7 +378,7 @@
                			</span>
                		</div>
 
-               		<h1 class="entry-title"><a href="single-video.html">This Is a Video Post Format.</a></h1>
+               		<h1 class="entry-title"><a href="{{ post.get_absolute_url }}">This Is a Video Post Format.</a></h1>
 
                	</div>
 						<div class="entry-excerpt">
