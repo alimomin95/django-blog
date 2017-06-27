@@ -1,5 +1,4 @@
-{% load static %}
-{% load django_markdown %}
+
 <!DOCTYPE html>
 <!--[if IE 8 ]><html class="no-js oldie ie8" lang="en"> <![endif]-->
 <!--[if IE 9 ]><html class="no-js oldie ie9" lang="en"> <![endif]-->
@@ -182,7 +181,7 @@
 		  			   </p>
 
 		  			   <div class="author-profile">
-		  			   	<img src="images/avatars/user-05.jpg" alt="">
+		  			   	<img src="{% static 'alwaysblue/images/avatars/user-05.jpg' %}" alt="">
 
 		  			   	<div class="about">
 		  			   		<h4><a href="#">Jonathan Smith</a></h4>
@@ -234,7 +233,7 @@
                   <li class="depth-1">
 
                      <div class="avatar">
-                        <img width="50" height="50" class="avatar" src="images/avatars/user-01.jpg" alt="">
+                        <img width="50" height="50" class="avatar" src="{% static 'alwaysblue/images/avatars/user-01.jpg' %}" alt="">
                      </div>
 
                      <div class="comment-content">
@@ -260,7 +259,7 @@
                   <li class="thread-alt depth-1">
 
                      <div class="avatar">
-                        <img width="50" height="50" class="avatar" src="images/avatars/user-04.jpg" alt="">
+                        <img width="50" height="50" class="avatar" src="{% static 'alwaysblue/images/avatars/user-04.jpg' %}" alt="">
                      </div>
 
                      <div class="comment-content">
@@ -287,7 +286,7 @@
                         <li class="depth-2">
 
                            <div class="avatar">
-                              <img width="50" height="50" class="avatar" src="images/avatars/user-03.jpg" alt="">
+                              <img width="50" height="50" class="avatar" src="{% static 'alwaysblue/images/avatars/user-03.jpg' %}" alt="">
                            </div>
 
                            <div class="comment-content">
@@ -314,7 +313,7 @@
                               <li class="depth-3">
 
                                  <div class="avatar">
-                                    <img width="50" height="50" class="avatar" src="images/avatars/user-04.jpg" alt="">
+                                    <img width="50" height="50" class="avatar" src="{% static 'alwaysblue/images/avatars/user-04.jpg' %}" alt="">
                                  </div>
 
                                  <div class="comment-content">
