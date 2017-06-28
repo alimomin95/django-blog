@@ -59,6 +59,7 @@ class Blog(models.Model):
     slug = models.SlugField(max_length=200, unique=True)
     type = models.IntegerField(default=0)
     body = MarkdownField()
+    excerpt = models.TextField(blank=True, null=True)
     created = models.DateTimeField(db_index=True, auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
     tags = models.ManyToManyField(Tag)

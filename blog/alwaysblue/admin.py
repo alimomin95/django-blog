@@ -11,7 +11,7 @@ from django_markdown.admin import MarkdownModelAdmin
 
 
 class BlogAdmin(MarkdownModelAdmin):
-    exclude = ['posted']
+    exclude = ['posted', 'excerpt']
     list_display = ('title', 'created')
     prepopulated_fields = {'slug': ('title',)}
 

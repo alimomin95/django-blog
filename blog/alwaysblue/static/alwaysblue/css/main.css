@@ -1218,6 +1218,13 @@ input::-moz-focus-inner {
 	color: #999999;
 }
 
+.bricks-wrapper .entry-date {
+	font-size: 1.5rem;
+	line-height: 2.7rem;
+	color: #cc0000;
+	margin-top: 2.5rem;
+}
+
 
 /* featured post slider - (_common-styles.scss) 
  * ------------------------------------------------------------------- */

@@ -209,7 +209,11 @@
                		
                	</div>
 						<div class="entry-excerpt">
-                            {{ post.body|markdown }}
+                            {{ post.excerpt }}
+                        </div>
+
+                        <div class="entry-date">
+                            {{ post.created }}
                         </div>
                </div>
 
@@ -231,17 +235,21 @@
 
                		<div class="entry-meta">
                			<span class="cat-links">
-               				<a href="#">Photography</a>
-               				<a href="#">html</a>
+               				{% for tag in post.tags.all %}
+		  				  	<a href="{{ tag.get_absolute_url }}">{{ tag.title }}</a>
+                            {% endfor %}
                			</span>
                		</div>
 
-               		<h1 class="entry-title"><a href="single-standard.html">Photography Skills Can Improve Your Graphic Design.</a></h1>
+               		<h1 class="entry-title"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h1>
 
                	</div>
 						<div class="entry-excerpt">
-							Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia aute incididunt velit sint in aliqua cillum in consequat consequat in culpa in anim.
-						</div>
+                            {{ post.excerpt }}
+                        </div>
+                        <div class="entry-date">
+                            {{ post.created }}
+                        </div>
                </div>
 
         		</article> <!-- end article -->
@@ -253,9 +261,9 @@
 
                <div class="entry-thumb">
 	               <blockquote>
-	                 	<p>Good design is making something intelligible and memorable. Great design is making something memorable and meaningful.</p>
+	                 	<p>{{ post.excerpt }}</p>
 
-	                 	<cite>Dieter Rams</cite>
+	                 	<cite>{{ post.author }}</cite>
 	               </blockquote>
                </div>
 
@@ -281,17 +289,21 @@
 
                		<div class="entry-meta">
                			<span class="cat-links">
-               				<a href="#">Design</a>
-               				<a href="#">Music</a>
+               				{% for tag in post.tags.all %}
+		  				  	<a href="{{ tag.get_absolute_url }}">{{ tag.title }}</a>
+                            {% endfor %}
                			</span>
                		</div>
 
-               		<h1 class="entry-title"><a href="{{ post.get_absolute_url }}">This Is a Audio Format Post.</a></h1>
+               		<h1 class="entry-title"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h1>
 
                	</div>
 						<div class="entry-excerpt">
-							Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia aute incididunt velit sint in aliqua cillum in consequat consequat in culpa in anim.
+                            {{ post.excerpt }}
 						</div>
+                        <div class="entry-date">
+                            {{ post.created }}
+                        </div>
                </div>
 
         		</article> <!-- /article -->
@@ -325,17 +337,21 @@
 
                		<div class="entry-meta">
                			<span class="cat-links">
-               				<a href="#">Branding</a>
-               				<a href="#">Wordpress</a>
+               				{% for tag in post.tags.all %}
+		  				  	<a href="{{ tag.get_absolute_url }}">{{ tag.title }}</a>
+                            {% endfor %}
                			</span>
                		</div>
 
-               		<h1 class="entry-title"><a href="single-gallery.html">Workspace Design Trends and Ideas.</a></h1>
+               		<h1 class="entry-title"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h1>
 
                	</div>
 						<div class="entry-excerpt">
-							Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia aute incididunt velit sint in aliqua cillum in consequat consequat in culpa in anim.
-						</div>
+                            {{ post.excerpt }}
+                        </div>
+                        <div class="entry-date">
+                            {{ post.created }}
+                        </div>
                </div>
 
         		</article> <!-- end article -->
@@ -373,8 +389,9 @@
 
                		<div class="entry-meta">
                			<span class="cat-links">
-               				<a href="#">Design</a>
-               				<a href="#">Branding</a>
+               				{% for tag in post.tags.all %}
+		  				  	<a href="{{ tag.get_absolute_url }}">{{ tag.title }}</a>
+                            {% endfor %}
                			</span>
                		</div>
 
@@ -382,8 +399,11 @@
 
                	</div>
 						<div class="entry-excerpt">
-							Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia aute incididunt velit sint in aliqua cillum in consequat consequat in culpa in anim.
-						</div>
+                            {{ post.excerpt }}
+                        </div>
+                        <div class="entry-date">
+                            {{ post.created }}
+                        </div>
                </div>
 
         		</article> <!-- end article -->

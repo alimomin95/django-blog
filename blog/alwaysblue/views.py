@@ -6,20 +6,49 @@ from django.shortcuts import render
 from models import Blog, Tag, Author
 
 from django.shortcuts import render_to_response, get_object_or_404
+
+from BeautifulSoup import BeautifulSoup
+
+import django_markdown
+
 # Create your views here.
 
 
 def home(request):
+    posts = Blog.objects.all()
+    for post in posts:
+        html = django_markdown.utils.markdown(value=post.body)
+        soup = BeautifulSoup(html)
+        try:
+            ex = soup.p.string
+            post.excerpt = ex[0:330] + '...'
+            post.save()
+        except:
+            pass
+
     return render_to_response('alwaysblue/index.html', {
         'tags': Tag.objects.all(),
-        'posts': Blog.objects.all()[:10]
+        'posts': posts[:10]
     })
 
 
 def index(request):
+    posts = Blog.objects.all()
+    for post in posts:
+        html = django_markdown.utils.markdown(value=post.body)
+        print html
+        soup = BeautifulSoup(html)
+        try:
+            ex = soup.p.string
+            print 'hello'
+            post.excerpt = ex[0:330] + '...'
+            post.save()
+        except:
+            pass
+
     return render_to_response('alwaysblue/index1.html', {
         'tags': Tag.objects.all(),
-        'posts': Blog.objects.all()[:10]
+        'posts': posts[:10]
     })
 
 
