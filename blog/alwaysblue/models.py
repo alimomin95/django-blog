@@ -14,8 +14,8 @@ from django.utils.encoding import python_2_unicode_compatible
 
 @python_2_unicode_compatible
 class Tag(models.Model):
-    title = models.CharField(max_length=100, db_index=True)
-    slug = models.SlugField(max_length=100, db_index=True)
+    title = models.CharField(max_length=100, db_index=True, unique=True)
+    slug = models.SlugField(max_length=100, db_index=True, unique=True)
 
     def __str__(self):
         return self.title
@@ -35,7 +35,7 @@ class Tag(models.Model):
 @python_2_unicode_compatible
 class Author(models.Model):
     title = models.CharField(max_length=100, db_index=True)
-    slug = models.SlugField(max_length=100, db_index=True)
+    slug = models.SlugField(max_length=100, db_index=True, unique=True)
 
     def __str__(self):
         return self.title
@@ -46,6 +46,18 @@ class Author(models.Model):
     @permalink
     def get_absolute_url(self):
         return ('view_blog_author', None, {'slug': self.slug})
+
+
+@python_2_unicode_compatible
+class Images(models.Model):
+    link = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.link
+
+    class Meta:
+        verbose_name = 'Image'
+        verbose_name_plural = 'Images'
 
 
 class EntryQuerySet(models.QuerySet):
@@ -67,6 +79,7 @@ class Blog(models.Model):
     embed_video = models.CharField(max_length=200, null=True, blank=True)
     published = models.BooleanField(default=True)
     audio = models.FileField(upload_to='audio', null=True, blank=True)
+    imagelinks = models.ManyToManyField(Images, null=True, blank=True)
 
     objects = EntryQuerySet.as_manager()
 
