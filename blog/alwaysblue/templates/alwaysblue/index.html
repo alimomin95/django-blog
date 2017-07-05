@@ -318,15 +318,11 @@
 
                   <div class="post-slider flexslider">
 							<ul class="slides">
+                                {% for img in post.imagelinks.all %}
 								<li>
-									<img src="{% static 'alwaysblue/images/thumbs/gallery/work1.jpg' %}">
+									<img src="{{ img.link }}">
 								</li>
-								<li>
-									<img src="{% static 'alwaysblue/images/thumbs/gallery/work2.jpg' %}">
-								</li>
-								<li>
-									<img src="{% static 'alwaysblue/images/thumbs/gallery/work3.jpg' %}">
-								</li>
+                                {% endfor %}
 							</ul>
 						</div>
 

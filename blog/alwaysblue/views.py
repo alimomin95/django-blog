@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render
 
-from models import Blog, Tag, Author
+from models import Blog, Tag, Author, Images
 
 from django.shortcuts import render_to_response, get_object_or_404
 
@@ -15,20 +15,35 @@ import django_markdown
 
 
 def home(request):
-    posts = Blog.objects.all()
+    posts = Blog.objects.all()[:10]
     for post in posts:
         html = django_markdown.utils.markdown(value=post.body)
         soup = BeautifulSoup(html)
         try:
             ex = soup.p.string
+            imgs = soup.findAll('img', {'src': True})
+            if len(imgs) > 1:
+                post.type = 4
+            for img in imgs:
+                url = img['src']
+                imglist = Images.objects.filter(link=url)
+                if len(imglist) == 0:
+                    image = Images(link=url)
+                    image.save()
+                else:
+                    image = imglist[0]
+                post.imagelinks.add(image)
+            post.save()
             post.excerpt = ex[0:330] + '...'
             post.save()
         except:
             pass
 
+
+
     return render_to_response('alwaysblue/index.html', {
         'tags': Tag.objects.all(),
-        'posts': posts[:10]
+        'posts': posts
     })
 
 
@@ -67,7 +82,7 @@ def view_post(request, slug):
             'post': object
         })
     elif object.type == 4:
-        return render_to_response('alwaysblue/single-gallery.html', {
+        return render_to_response('alwaysblue/single-standard.html', {
             'post': object
         })
     elif object.type == 6:
